@@ -1,24 +1,21 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Home from './Components/Home';
+import Game from './Components/Game';
 
 function App() {
+  const [home ,setHome]= useState(true);
+
+ const handleHome =()=>{
+      setHome(prev => !prev);
+ };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+     <div className="App absolute w-full h-screen bg-zinc-900">
+      {
+        home ? <Home handleHome={handleHome}/> : <Game  handleHome={handleHome}/>
+      }
+     </div>
   );
 }
 
